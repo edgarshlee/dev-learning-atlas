@@ -1,0 +1,1518 @@
+{
+  "version": "2026.10.17.1",
+  "topics": [
+    {
+      "id": "backend-engineering",
+      "title": "Backend Engineering",
+      "description": "The root of the backend learning atlas.",
+      "prerequisiteIds": [],
+      "position": {
+        "x": 420,
+        "y": 0
+      }
+    },
+    {
+      "id": "algorithms",
+      "title": "Algorithms",
+      "description": "Data structures, complexity, and coding interview patterns.",
+      "parentId": "backend-engineering",
+      "prerequisiteIds": [],
+      "position": {
+        "x": 0,
+        "y": 190
+      }
+    },
+    {
+      "id": "java-kotlin",
+      "title": "Java & Kotlin",
+      "description": "JVM fundamentals, language design, concurrency, and null safety.",
+      "parentId": "backend-engineering",
+      "prerequisiteIds": [],
+      "position": {
+        "x": 210,
+        "y": 190
+      }
+    },
+    {
+      "id": "spring",
+      "title": "Spring",
+      "description": "Spring Boot, transactions, data access, security, and testing.",
+      "parentId": "backend-engineering",
+      "prerequisiteIds": [
+        "java-kotlin"
+      ],
+      "position": {
+        "x": 420,
+        "y": 190
+      }
+    },
+    {
+      "id": "database",
+      "title": "Database",
+      "description": "Data modeling, indexes, transactions, locking, and query plans.",
+      "parentId": "backend-engineering",
+      "prerequisiteIds": [],
+      "position": {
+        "x": 630,
+        "y": 190
+      }
+    },
+    {
+      "id": "distributed-systems",
+      "title": "Distributed Systems",
+      "description": "Replication, partitioning, messaging, consistency, and failure.",
+      "parentId": "backend-engineering",
+      "prerequisiteIds": [
+        "database",
+        "java-kotlin"
+      ],
+      "position": {
+        "x": 250,
+        "y": 400
+      }
+    },
+    {
+      "id": "system-design",
+      "title": "System Design",
+      "description": "Requirements, capacity, APIs, bottlenecks, trade-offs, and evolution.",
+      "parentId": "backend-engineering",
+      "prerequisiteIds": [
+        "distributed-systems",
+        "spring"
+      ],
+      "position": {
+        "x": 500,
+        "y": 400
+      }
+    },
+    {
+      "id": "cloud-observability",
+      "title": "Cloud & Observability",
+      "description": "Production architecture, reliability, telemetry, and incident response.",
+      "parentId": "backend-engineering",
+      "prerequisiteIds": [
+        "system-design"
+      ],
+      "position": {
+        "x": 750,
+        "y": 400
+      }
+    },
+    {
+      "id": "event-data-pipelines",
+      "title": "Event & Data Pipelines",
+      "description": "Event collection, Kafka, stream processing, delivery guarantees, and replay.",
+      "parentId": "backend-engineering",
+      "prerequisiteIds": [
+        "distributed-systems",
+        "database"
+      ],
+      "position": {
+        "x": 80,
+        "y": 620
+      }
+    },
+    {
+      "id": "performance-engineering",
+      "title": "Performance Engineering",
+      "description": "Latency budgets, caching, load tests, profiling, backpressure, and capacity planning.",
+      "parentId": "backend-engineering",
+      "prerequisiteIds": [
+        "spring",
+        "distributed-systems"
+      ],
+      "position": {
+        "x": 310,
+        "y": 620
+      }
+    },
+    {
+      "id": "delivery-platform",
+      "title": "Delivery Platform",
+      "description": "Containers, CI/CD, deployment strategies, infrastructure automation, and rollback.",
+      "parentId": "backend-engineering",
+      "prerequisiteIds": [
+        "cloud-observability"
+      ],
+      "position": {
+        "x": 760,
+        "y": 620
+      }
+    },
+    {
+      "id": "technical-leadership",
+      "title": "Technical Leadership",
+      "description": "Architecture decisions, influence, platform adoption, and team growth.",
+      "parentId": "backend-engineering",
+      "prerequisiteIds": [
+        "system-design",
+        "delivery-platform"
+      ],
+      "position": {
+        "x": 370,
+        "y": 840
+      }
+    },
+    {
+      "id": "ai-engineering",
+      "title": "AI-assisted Engineering",
+      "description": "Responsible use of AI in design, implementation, testing, and operations.",
+      "parentId": "backend-engineering",
+      "prerequisiteIds": [
+        "cloud-observability"
+      ],
+      "position": {
+        "x": 650,
+        "y": 840
+      }
+    }
+  ],
+  "resources": [
+    {
+      "id": "kotlin-null-safety",
+      "title": "Kotlin null safety",
+      "url": "https://kotlinlang.org/docs/null-safety.html",
+      "type": "ARTICLE",
+      "difficulty": "FOUNDATION",
+      "topicIds": [
+        "java-kotlin"
+      ],
+      "summary": "Nullable types, safe calls, Elvis operator, and Java interop boundaries.",
+      "estimatedMinutes": 45,
+      "language": "en"
+    },
+    {
+      "id": "spring-kotlin-tutorial",
+      "title": "Building web applications with Spring Boot and Kotlin",
+      "url": "https://spring.io/guides/tutorials/spring-boot-kotlin",
+      "type": "ARTICLE",
+      "difficulty": "FOUNDATION",
+      "topicIds": [
+        "java-kotlin",
+        "spring"
+      ],
+      "summary": "Official Spring tutorial for a Kotlin-based web application.",
+      "estimatedMinutes": 120,
+      "language": "en"
+    },
+    {
+      "id": "spring-transactions",
+      "title": "Spring transaction management",
+      "url": "https://docs.spring.io/spring-framework/reference/data-access/transaction.html",
+      "type": "ARTICLE",
+      "difficulty": "INTERMEDIATE",
+      "topicIds": [
+        "spring",
+        "database"
+      ],
+      "summary": "Transaction abstraction, propagation, rollback, and declarative management.",
+      "estimatedMinutes": 150,
+      "language": "en"
+    },
+    {
+      "id": "use-the-index-luke",
+      "title": "Use The Index, Luke",
+      "url": "https://use-the-index-luke.com/",
+      "type": "COURSE",
+      "difficulty": "INTERMEDIATE",
+      "topicIds": [
+        "database"
+      ],
+      "summary": "A free guide to SQL indexing and execution behavior.",
+      "estimatedMinutes": 300,
+      "language": "en"
+    },
+    {
+      "id": "ddia",
+      "title": "데이터 중심 애플리케이션 설계",
+      "url": "https://www.yes24.com/Product/Goods/59566585",
+      "type": "BOOK",
+      "difficulty": "ADVANCED",
+      "topicIds": [
+        "database",
+        "distributed-systems",
+        "system-design"
+      ],
+      "summary": "Replication, partitioning, transactions, streams, and distributed-system trade-offs.",
+      "estimatedMinutes": 1800,
+      "language": "ko"
+    },
+    {
+      "id": "system-design-interview-vol1",
+      "title": "가상 면접 사례로 배우는 대규모 시스템 설계 기초 1",
+      "url": "https://www.yes24.com/Product/Goods/102819435",
+      "type": "BOOK",
+      "difficulty": "INTERMEDIATE",
+      "topicIds": [
+        "system-design"
+      ],
+      "summary": "A repeatable interview framework and common large-scale design cases.",
+      "estimatedMinutes": 900,
+      "language": "ko"
+    },
+    {
+      "id": "bytebytego-system-design-101",
+      "title": "ByteByteGo System Design 101",
+      "url": "https://github.com/ByteByteGoHq/system-design-101",
+      "type": "REPOSITORY",
+      "difficulty": "INTERMEDIATE",
+      "topicIds": [
+        "distributed-systems",
+        "system-design"
+      ],
+      "summary": "Visual explanations of reusable system-design building blocks.",
+      "estimatedMinutes": 600,
+      "language": "en"
+    },
+    {
+      "id": "aws-well-architected",
+      "title": "AWS Well-Architected Framework",
+      "url": "https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html",
+      "type": "ARTICLE",
+      "difficulty": "INTERMEDIATE",
+      "topicIds": [
+        "system-design",
+        "cloud-observability"
+      ],
+      "summary": "Operational excellence, security, reliability, performance, cost, and sustainability.",
+      "estimatedMinutes": 480,
+      "language": "en"
+    },
+    {
+      "id": "google-sre-book",
+      "title": "Site Reliability Engineering",
+      "url": "https://sre.google/sre-book/table-of-contents/",
+      "type": "BOOK",
+      "difficulty": "ADVANCED",
+      "topicIds": [
+        "cloud-observability",
+        "technical-leadership"
+      ],
+      "summary": "Free online book about reliability, SLOs, toil, monitoring, and incident response.",
+      "estimatedMinutes": 1200,
+      "language": "en"
+    },
+    {
+      "id": "kafka-introduction",
+      "title": "Apache Kafka: Introduction",
+      "url": "https://kafka.apache.org/intro/",
+      "type": "ARTICLE",
+      "difficulty": "FOUNDATION",
+      "topicIds": [
+        "distributed-systems",
+        "event-data-pipelines"
+      ],
+      "summary": "Events, topics, partitions, producers, consumers, retention, and Kafka's core guarantees.",
+      "estimatedMinutes": 90,
+      "language": "en"
+    },
+    {
+      "id": "spring-kafka-reference",
+      "title": "Spring for Apache Kafka reference",
+      "url": "https://docs.spring.io/spring-kafka/reference/",
+      "type": "ARTICLE",
+      "difficulty": "INTERMEDIATE",
+      "topicIds": [
+        "spring",
+        "event-data-pipelines"
+      ],
+      "summary": "Build Kotlin/Spring producers and consumers with retries, transactions, and dead-letter topics.",
+      "estimatedMinutes": 240,
+      "language": "en"
+    },
+    {
+      "id": "redis-developer-guide",
+      "title": "Redis data types tutorial",
+      "url": "https://redis.io/docs/latest/develop/data-types/",
+      "type": "ARTICLE",
+      "difficulty": "FOUNDATION",
+      "topicIds": [
+        "database",
+        "performance-engineering",
+        "event-data-pipelines"
+      ],
+      "summary": "Choose Redis structures for caching, counters, streams, queues, and low-latency access.",
+      "estimatedMinutes": 120,
+      "language": "en"
+    },
+    {
+      "id": "grafana-k6-first-test",
+      "title": "Grafana k6: Run your first test",
+      "url": "https://grafana.com/docs/k6/latest/get-started/running-k6/",
+      "type": "LAB",
+      "difficulty": "FOUNDATION",
+      "topicIds": [
+        "performance-engineering",
+        "cloud-observability"
+      ],
+      "summary": "Turn latency and throughput requirements into a repeatable API load test.",
+      "estimatedMinutes": 90,
+      "language": "en"
+    },
+    {
+      "id": "opentelemetry-java-instrumentation",
+      "title": "OpenTelemetry Java zero-code instrumentation",
+      "url": "https://opentelemetry.io/docs/zero-code/java/agent/",
+      "type": "LAB",
+      "difficulty": "INTERMEDIATE",
+      "topicIds": [
+        "cloud-observability",
+        "performance-engineering"
+      ],
+      "summary": "Instrument a JVM service and connect traces, metrics, and logs to performance investigations.",
+      "estimatedMinutes": 120,
+      "language": "en"
+    },
+    {
+      "id": "github-actions-java-gradle",
+      "title": "GitHub Actions: Build and test Java with Gradle",
+      "url": "https://docs.github.com/en/actions/tutorials/build-and-test-code/java-with-gradle",
+      "type": "LAB",
+      "difficulty": "FOUNDATION",
+      "topicIds": [
+        "delivery-platform"
+      ],
+      "summary": "Create a practical CI pipeline for compiling, testing, caching, and publishing build results.",
+      "estimatedMinutes": 90,
+      "language": "en"
+    },
+    {
+      "id": "kubernetes-deployments",
+      "title": "Kubernetes Deployments",
+      "url": "https://kubernetes.io/docs/concepts/workloads/controllers/deployment/",
+      "type": "ARTICLE",
+      "difficulty": "INTERMEDIATE",
+      "topicIds": [
+        "delivery-platform",
+        "cloud-observability"
+      ],
+      "summary": "Understand rollout state, update strategies, health, rollback, and deployment failure modes.",
+      "estimatedMinutes": 150,
+      "language": "en"
+    },
+    {
+      "id": "pipeline-capstone",
+      "title": "Capstone: high-throughput event pipeline",
+      "url": "/labs/high-throughput-event-pipeline.md",
+      "type": "LAB",
+      "difficulty": "ADVANCED",
+      "topicIds": [
+        "event-data-pipelines",
+        "performance-engineering",
+        "delivery-platform"
+      ],
+      "summary": "Build a Kotlin/Spring click-event API with Kafka, Redis, PostgreSQL, k6, telemetry, CI, and a documented failure-recovery drill.",
+      "estimatedMinutes": 1200,
+      "language": "ko"
+    },
+    {
+      "id": "staffeng-stories",
+      "title": "StaffEng: Stories",
+      "url": "https://staffeng.com/stories/",
+      "type": "ARTICLE",
+      "difficulty": "ADVANCED",
+      "topicIds": [
+        "technical-leadership"
+      ],
+      "summary": "First-hand accounts of Staff-plus engineering scope, influence, and career paths.",
+      "estimatedMinutes": 360,
+      "language": "en"
+    },
+    {
+      "id": "github-copilot-responsible-use",
+      "title": "Responsible use of GitHub Copilot",
+      "url": "https://docs.github.com/en/copilot/responsible-use",
+      "type": "ARTICLE",
+      "difficulty": "FOUNDATION",
+      "topicIds": [
+        "ai-engineering",
+        "technical-leadership"
+      ],
+      "summary": "Limitations, review responsibilities, and safe adoption of AI-assisted development.",
+      "estimatedMinutes": 45,
+      "language": "en"
+    },
+    {
+      "id": "programmers-1845",
+      "title": "프로그래머스: 폰켓몬",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/1845?language=java",
+      "type": "CODING_PROBLEM",
+      "difficulty": "FOUNDATION",
+      "topicIds": [
+        "algorithms"
+      ],
+      "summary": "HashSet 연습 문제. 목표 시간 15분.",
+      "estimatedMinutes": 15,
+      "language": "ko"
+    },
+    {
+      "id": "programmers-42576",
+      "title": "프로그래머스: 완주하지 못한 선수",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/42576?language=java",
+      "type": "CODING_PROBLEM",
+      "difficulty": "FOUNDATION",
+      "topicIds": [
+        "algorithms"
+      ],
+      "summary": "HashMap, 빈도 계산 연습 문제. 목표 시간 20분.",
+      "estimatedMinutes": 20,
+      "language": "ko"
+    },
+    {
+      "id": "programmers-42748",
+      "title": "프로그래머스: K번째수",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/42748?language=java",
+      "type": "CODING_PROBLEM",
+      "difficulty": "FOUNDATION",
+      "topicIds": [
+        "algorithms"
+      ],
+      "summary": "배열, 정렬 연습 문제. 목표 시간 20분.",
+      "estimatedMinutes": 20,
+      "language": "ko"
+    },
+    {
+      "id": "programmers-42840",
+      "title": "프로그래머스: 모의고사",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/42840?language=java",
+      "type": "CODING_PROBLEM",
+      "difficulty": "FOUNDATION",
+      "topicIds": [
+        "algorithms"
+      ],
+      "summary": "배열, 완전탐색 연습 문제. 목표 시간 20분.",
+      "estimatedMinutes": 20,
+      "language": "ko"
+    },
+    {
+      "id": "programmers-86491",
+      "title": "프로그래머스: 최소직사각형",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/86491?language=java",
+      "type": "CODING_PROBLEM",
+      "difficulty": "FOUNDATION",
+      "topicIds": [
+        "algorithms"
+      ],
+      "summary": "구현 연습 문제. 목표 시간 20분.",
+      "estimatedMinutes": 20,
+      "language": "ko"
+    },
+    {
+      "id": "programmers-42862",
+      "title": "프로그래머스: 체육복",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/42862?language=java",
+      "type": "CODING_PROBLEM",
+      "difficulty": "FOUNDATION",
+      "topicIds": [
+        "algorithms"
+      ],
+      "summary": "그리디 연습 문제. 목표 시간 25분.",
+      "estimatedMinutes": 25,
+      "language": "ko"
+    },
+    {
+      "id": "programmers-64061",
+      "title": "프로그래머스: 크레인 인형뽑기 게임 — 카카오",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/64061?language=java",
+      "type": "CODING_PROBLEM",
+      "difficulty": "FOUNDATION",
+      "topicIds": [
+        "algorithms"
+      ],
+      "summary": "스택, 시뮬레이션 연습 문제. 목표 시간 25분.",
+      "estimatedMinutes": 25,
+      "language": "ko"
+    },
+    {
+      "id": "programmers-72410",
+      "title": "프로그래머스: 신규 아이디 추천 — 카카오",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/72410?language=java",
+      "type": "CODING_PROBLEM",
+      "difficulty": "FOUNDATION",
+      "topicIds": [
+        "algorithms"
+      ],
+      "summary": "문자열, 정규식 연습 문제. 목표 시간 30분.",
+      "estimatedMinutes": 30,
+      "language": "ko"
+    },
+    {
+      "id": "programmers-81301",
+      "title": "프로그래머스: 숫자 문자열과 영단어 — 카카오",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/81301?language=java",
+      "type": "CODING_PROBLEM",
+      "difficulty": "FOUNDATION",
+      "topicIds": [
+        "algorithms"
+      ],
+      "summary": "문자열 치환 연습 문제. 목표 시간 20분.",
+      "estimatedMinutes": 20,
+      "language": "ko"
+    },
+    {
+      "id": "programmers-92334",
+      "title": "프로그래머스: 신고 결과 받기 — 카카오",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/92334?language=java",
+      "type": "CODING_PROBLEM",
+      "difficulty": "FOUNDATION",
+      "topicIds": [
+        "algorithms"
+      ],
+      "summary": "HashMap, HashSet 연습 문제. 목표 시간 35분.",
+      "estimatedMinutes": 35,
+      "language": "ko"
+    },
+    {
+      "id": "programmers-150370",
+      "title": "프로그래머스: 개인정보 수집 유효기간 — 카카오",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/150370?language=java",
+      "type": "CODING_PROBLEM",
+      "difficulty": "FOUNDATION",
+      "topicIds": [
+        "algorithms"
+      ],
+      "summary": "날짜 변환, 구현 연습 문제. 목표 시간 30분.",
+      "estimatedMinutes": 30,
+      "language": "ko"
+    },
+    {
+      "id": "programmers-258712",
+      "title": "프로그래머스: 가장 많이 받은 선물 — 카카오",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/258712?language=java",
+      "type": "CODING_PROBLEM",
+      "difficulty": "FOUNDATION",
+      "topicIds": [
+        "algorithms"
+      ],
+      "summary": "해시, 2차원 배열 연습 문제. 목표 시간 40분.",
+      "estimatedMinutes": 40,
+      "language": "ko"
+    },
+    {
+      "id": "programmers-12909",
+      "title": "프로그래머스: 올바른 괄호",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/12909?language=java",
+      "type": "CODING_PROBLEM",
+      "difficulty": "INTERMEDIATE",
+      "topicIds": [
+        "algorithms"
+      ],
+      "summary": "스택 연습 문제. 목표 시간 20분.",
+      "estimatedMinutes": 20,
+      "language": "ko"
+    },
+    {
+      "id": "programmers-phone-book",
+      "title": "프로그래머스: 전화번호 목록",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/42577?language=java",
+      "type": "CODING_PROBLEM",
+      "difficulty": "INTERMEDIATE",
+      "topicIds": [
+        "algorithms"
+      ],
+      "summary": "HashSet, 문자열 연습 문제. 목표 시간 30분.",
+      "estimatedMinutes": 30,
+      "language": "ko"
+    },
+    {
+      "id": "programmers-42578",
+      "title": "프로그래머스: 의상",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/42578?language=java",
+      "type": "CODING_PROBLEM",
+      "difficulty": "INTERMEDIATE",
+      "topicIds": [
+        "algorithms"
+      ],
+      "summary": "HashMap, 경우의 수 연습 문제. 목표 시간 30분.",
+      "estimatedMinutes": 30,
+      "language": "ko"
+    },
+    {
+      "id": "programmers-42586",
+      "title": "프로그래머스: 기능개발",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/42586?language=java",
+      "type": "CODING_PROBLEM",
+      "difficulty": "INTERMEDIATE",
+      "topicIds": [
+        "algorithms"
+      ],
+      "summary": "큐 연습 문제. 목표 시간 35분.",
+      "estimatedMinutes": 35,
+      "language": "ko"
+    },
+    {
+      "id": "programmers-42587",
+      "title": "프로그래머스: 프로세스",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/42587?language=java",
+      "type": "CODING_PROBLEM",
+      "difficulty": "INTERMEDIATE",
+      "topicIds": [
+        "algorithms"
+      ],
+      "summary": "큐, 우선순위 연습 문제. 목표 시간 35분.",
+      "estimatedMinutes": 35,
+      "language": "ko"
+    },
+    {
+      "id": "programmers-42583",
+      "title": "프로그래머스: 다리를 지나는 트럭",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/42583?language=java",
+      "type": "CODING_PROBLEM",
+      "difficulty": "INTERMEDIATE",
+      "topicIds": [
+        "algorithms"
+      ],
+      "summary": "큐, 시뮬레이션 연습 문제. 목표 시간 40분.",
+      "estimatedMinutes": 40,
+      "language": "ko"
+    },
+    {
+      "id": "programmers-42584",
+      "title": "프로그래머스: 주식가격",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/42584?language=java",
+      "type": "CODING_PROBLEM",
+      "difficulty": "INTERMEDIATE",
+      "topicIds": [
+        "algorithms"
+      ],
+      "summary": "단조 스택 연습 문제. 목표 시간 40분.",
+      "estimatedMinutes": 40,
+      "language": "ko"
+    },
+    {
+      "id": "programmers-42626",
+      "title": "프로그래머스: 더 맵게",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/42626?language=java",
+      "type": "CODING_PROBLEM",
+      "difficulty": "INTERMEDIATE",
+      "topicIds": [
+        "algorithms"
+      ],
+      "summary": "PriorityQueue 연습 문제. 목표 시간 30분.",
+      "estimatedMinutes": 30,
+      "language": "ko"
+    },
+    {
+      "id": "programmers-42746",
+      "title": "프로그래머스: 가장 큰 수",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/42746?language=java",
+      "type": "CODING_PROBLEM",
+      "difficulty": "INTERMEDIATE",
+      "topicIds": [
+        "algorithms"
+      ],
+      "summary": "Comparator, 정렬 연습 문제. 목표 시간 35분.",
+      "estimatedMinutes": 35,
+      "language": "ko"
+    },
+    {
+      "id": "programmers-42747",
+      "title": "프로그래머스: H-Index",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/42747?language=java",
+      "type": "CODING_PROBLEM",
+      "difficulty": "INTERMEDIATE",
+      "topicIds": [
+        "algorithms"
+      ],
+      "summary": "정렬 연습 문제. 목표 시간 35분.",
+      "estimatedMinutes": 35,
+      "language": "ko"
+    },
+    {
+      "id": "programmers-42842",
+      "title": "프로그래머스: 카펫",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/42842?language=java",
+      "type": "CODING_PROBLEM",
+      "difficulty": "INTERMEDIATE",
+      "topicIds": [
+        "algorithms"
+      ],
+      "summary": "완전탐색, 수학 연습 문제. 목표 시간 25분.",
+      "estimatedMinutes": 25,
+      "language": "ko"
+    },
+    {
+      "id": "programmers-87946",
+      "title": "프로그래머스: 피로도",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/87946?language=java",
+      "type": "CODING_PROBLEM",
+      "difficulty": "INTERMEDIATE",
+      "topicIds": [
+        "algorithms"
+      ],
+      "summary": "백트래킹 연습 문제. 목표 시간 35분.",
+      "estimatedMinutes": 35,
+      "language": "ko"
+    },
+    {
+      "id": "programmers-86971",
+      "title": "프로그래머스: 전력망을 둘로 나누기",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/86971?language=java",
+      "type": "CODING_PROBLEM",
+      "difficulty": "INTERMEDIATE",
+      "topicIds": [
+        "algorithms"
+      ],
+      "summary": "그래프, 완전탐색 연습 문제. 목표 시간 40분.",
+      "estimatedMinutes": 40,
+      "language": "ko"
+    },
+    {
+      "id": "programmers-42883",
+      "title": "프로그래머스: 큰 수 만들기",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/42883?language=java",
+      "type": "CODING_PROBLEM",
+      "difficulty": "INTERMEDIATE",
+      "topicIds": [
+        "algorithms"
+      ],
+      "summary": "그리디, 스택 연습 문제. 목표 시간 40분.",
+      "estimatedMinutes": 40,
+      "language": "ko"
+    },
+    {
+      "id": "programmers-42885",
+      "title": "프로그래머스: 구명보트",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/42885?language=java",
+      "type": "CODING_PROBLEM",
+      "difficulty": "INTERMEDIATE",
+      "topicIds": [
+        "algorithms"
+      ],
+      "summary": "그리디, 투 포인터 연습 문제. 목표 시간 30분.",
+      "estimatedMinutes": 30,
+      "language": "ko"
+    },
+    {
+      "id": "programmers-43165",
+      "title": "프로그래머스: 타겟 넘버",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/43165?language=java",
+      "type": "CODING_PROBLEM",
+      "difficulty": "INTERMEDIATE",
+      "topicIds": [
+        "algorithms"
+      ],
+      "summary": "DFS 연습 문제. 목표 시간 35분.",
+      "estimatedMinutes": 35,
+      "language": "ko"
+    },
+    {
+      "id": "programmers-game-map",
+      "title": "프로그래머스: 게임 맵 최단거리",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/1844?language=java",
+      "type": "CODING_PROBLEM",
+      "difficulty": "INTERMEDIATE",
+      "topicIds": [
+        "algorithms"
+      ],
+      "summary": "BFS 연습 문제. 목표 시간 40분.",
+      "estimatedMinutes": 40,
+      "language": "ko"
+    },
+    {
+      "id": "programmers-154539",
+      "title": "프로그래머스: 뒤에 있는 큰 수 찾기",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/154539?language=java",
+      "type": "CODING_PROBLEM",
+      "difficulty": "INTERMEDIATE",
+      "topicIds": [
+        "algorithms"
+      ],
+      "summary": "단조 스택 연습 문제. 목표 시간 40분.",
+      "estimatedMinutes": 40,
+      "language": "ko"
+    },
+    {
+      "id": "programmers-154540",
+      "title": "프로그래머스: 무인도 여행",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/154540?language=java",
+      "type": "CODING_PROBLEM",
+      "difficulty": "INTERMEDIATE",
+      "topicIds": [
+        "algorithms"
+      ],
+      "summary": "BFS, 연결 요소 연습 문제. 목표 시간 40분.",
+      "estimatedMinutes": 40,
+      "language": "ko"
+    },
+    {
+      "id": "programmers-42888",
+      "title": "프로그래머스: 오픈채팅방",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/42888?language=java",
+      "type": "CODING_PROBLEM",
+      "difficulty": "INTERMEDIATE",
+      "topicIds": [
+        "algorithms"
+      ],
+      "summary": "해시, 문자열 파싱 연습 문제. 목표 시간 35분.",
+      "estimatedMinutes": 35,
+      "language": "ko"
+    },
+    {
+      "id": "programmers-17680",
+      "title": "프로그래머스: 캐시",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/17680?language=java",
+      "type": "CODING_PROBLEM",
+      "difficulty": "INTERMEDIATE",
+      "topicIds": [
+        "algorithms"
+      ],
+      "summary": "LRU, 구현 연습 문제. 목표 시간 35분.",
+      "estimatedMinutes": 35,
+      "language": "ko"
+    },
+    {
+      "id": "programmers-17686",
+      "title": "프로그래머스: 파일명 정렬",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/17686?language=java",
+      "type": "CODING_PROBLEM",
+      "difficulty": "INTERMEDIATE",
+      "topicIds": [
+        "algorithms"
+      ],
+      "summary": "파싱, 안정 정렬 연습 문제. 목표 시간 45분.",
+      "estimatedMinutes": 45,
+      "language": "ko"
+    },
+    {
+      "id": "programmers-60057",
+      "title": "프로그래머스: 문자열 압축",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/60057?language=java",
+      "type": "CODING_PROBLEM",
+      "difficulty": "INTERMEDIATE",
+      "topicIds": [
+        "algorithms"
+      ],
+      "summary": "문자열, 완전탐색 연습 문제. 목표 시간 45분.",
+      "estimatedMinutes": 45,
+      "language": "ko"
+    },
+    {
+      "id": "programmers-72411",
+      "title": "프로그래머스: 메뉴 리뉴얼",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/72411?language=java",
+      "type": "CODING_PROBLEM",
+      "difficulty": "INTERMEDIATE",
+      "topicIds": [
+        "algorithms"
+      ],
+      "summary": "조합, 해시 연습 문제. 목표 시간 50분.",
+      "estimatedMinutes": 50,
+      "language": "ko"
+    },
+    {
+      "id": "programmers-72412",
+      "title": "프로그래머스: 순위 검색",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/72412?language=java",
+      "type": "CODING_PROBLEM",
+      "difficulty": "INTERMEDIATE",
+      "topicIds": [
+        "algorithms"
+      ],
+      "summary": "전처리, 이분탐색 연습 문제. 목표 시간 60분.",
+      "estimatedMinutes": 60,
+      "language": "ko"
+    },
+    {
+      "id": "programmers-92341",
+      "title": "프로그래머스: 주차 요금 계산",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/92341?language=java",
+      "type": "CODING_PROBLEM",
+      "difficulty": "INTERMEDIATE",
+      "topicIds": [
+        "algorithms"
+      ],
+      "summary": "해시, 시간 파싱 연습 문제. 목표 시간 45분.",
+      "estimatedMinutes": 45,
+      "language": "ko"
+    },
+    {
+      "id": "programmers-118667",
+      "title": "프로그래머스: 두 큐 합 같게 만들기",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/118667?language=java",
+      "type": "CODING_PROBLEM",
+      "difficulty": "INTERMEDIATE",
+      "topicIds": [
+        "algorithms"
+      ],
+      "summary": "큐, 투 포인터 연습 문제. 목표 시간 50분.",
+      "estimatedMinutes": 50,
+      "language": "ko"
+    },
+    {
+      "id": "programmers-150368",
+      "title": "프로그래머스: 이모티콘 할인행사",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/150368?language=java",
+      "type": "CODING_PROBLEM",
+      "difficulty": "INTERMEDIATE",
+      "topicIds": [
+        "algorithms"
+      ],
+      "summary": "완전탐색 연습 문제. 목표 시간 50분.",
+      "estimatedMinutes": 50,
+      "language": "ko"
+    },
+    {
+      "id": "programmers-42579",
+      "title": "프로그래머스: 베스트앨범",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/42579?language=java",
+      "type": "CODING_PROBLEM",
+      "difficulty": "ADVANCED",
+      "topicIds": [
+        "algorithms"
+      ],
+      "summary": "해시, 다중 정렬 연습 문제. 목표 시간 50분.",
+      "estimatedMinutes": 50,
+      "language": "ko"
+    },
+    {
+      "id": "programmers-42627",
+      "title": "프로그래머스: 디스크 컨트롤러",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/42627?language=java",
+      "type": "CODING_PROBLEM",
+      "difficulty": "ADVANCED",
+      "topicIds": [
+        "algorithms"
+      ],
+      "summary": "힙, 스케줄링 연습 문제. 목표 시간 60분.",
+      "estimatedMinutes": 60,
+      "language": "ko"
+    },
+    {
+      "id": "programmers-42628",
+      "title": "프로그래머스: 이중우선순위큐",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/42628?language=java",
+      "type": "CODING_PROBLEM",
+      "difficulty": "ADVANCED",
+      "topicIds": [
+        "algorithms"
+      ],
+      "summary": "힙, TreeMap 연습 문제. 목표 시간 50분.",
+      "estimatedMinutes": 50,
+      "language": "ko"
+    },
+    {
+      "id": "programmers-43162",
+      "title": "프로그래머스: 네트워크",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/43162?language=java",
+      "type": "CODING_PROBLEM",
+      "difficulty": "ADVANCED",
+      "topicIds": [
+        "algorithms"
+      ],
+      "summary": "DFS/BFS, 연결 요소 연습 문제. 목표 시간 40분.",
+      "estimatedMinutes": 40,
+      "language": "ko"
+    },
+    {
+      "id": "programmers-43163",
+      "title": "프로그래머스: 단어 변환",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/43163?language=java",
+      "type": "CODING_PROBLEM",
+      "difficulty": "ADVANCED",
+      "topicIds": [
+        "algorithms"
+      ],
+      "summary": "BFS 연습 문제. 목표 시간 45분.",
+      "estimatedMinutes": 45,
+      "language": "ko"
+    },
+    {
+      "id": "programmers-43164",
+      "title": "프로그래머스: 여행경로",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/43164?language=java",
+      "type": "CODING_PROBLEM",
+      "difficulty": "ADVANCED",
+      "topicIds": [
+        "algorithms"
+      ],
+      "summary": "DFS, 백트래킹 연습 문제. 목표 시간 60분.",
+      "estimatedMinutes": 60,
+      "language": "ko"
+    },
+    {
+      "id": "programmers-43105",
+      "title": "프로그래머스: 정수 삼각형",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/43105?language=java",
+      "type": "CODING_PROBLEM",
+      "difficulty": "ADVANCED",
+      "topicIds": [
+        "algorithms"
+      ],
+      "summary": "DP 연습 문제. 목표 시간 40분.",
+      "estimatedMinutes": 40,
+      "language": "ko"
+    },
+    {
+      "id": "programmers-42895",
+      "title": "프로그래머스: N으로 표현",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/42895?language=java",
+      "type": "CODING_PROBLEM",
+      "difficulty": "ADVANCED",
+      "topicIds": [
+        "algorithms"
+      ],
+      "summary": "DP, Set 연습 문제. 목표 시간 60분.",
+      "estimatedMinutes": 60,
+      "language": "ko"
+    },
+    {
+      "id": "programmers-42898",
+      "title": "프로그래머스: 등굣길",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/42898?language=java",
+      "type": "CODING_PROBLEM",
+      "difficulty": "ADVANCED",
+      "topicIds": [
+        "algorithms"
+      ],
+      "summary": "DP 연습 문제. 목표 시간 45분.",
+      "estimatedMinutes": 45,
+      "language": "ko"
+    },
+    {
+      "id": "programmers-43238",
+      "title": "프로그래머스: 입국심사",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/43238?language=java",
+      "type": "CODING_PROBLEM",
+      "difficulty": "ADVANCED",
+      "topicIds": [
+        "algorithms"
+      ],
+      "summary": "매개변수 탐색 연습 문제. 목표 시간 50분.",
+      "estimatedMinutes": 50,
+      "language": "ko"
+    },
+    {
+      "id": "programmers-67258",
+      "title": "프로그래머스: 보석 쇼핑",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/67258?language=java",
+      "type": "CODING_PROBLEM",
+      "difficulty": "ADVANCED",
+      "topicIds": [
+        "algorithms"
+      ],
+      "summary": "투 포인터, 해시 연습 문제. 목표 시간 60분.",
+      "estimatedMinutes": 60,
+      "language": "ko"
+    },
+    {
+      "id": "programmers-72413",
+      "title": "프로그래머스: 합승 택시 요금",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/72413?language=java",
+      "type": "CODING_PROBLEM",
+      "difficulty": "ADVANCED",
+      "topicIds": [
+        "algorithms"
+      ],
+      "summary": "최단거리 연습 문제. 목표 시간 70분.",
+      "estimatedMinutes": 70,
+      "language": "ko"
+    },
+    {
+      "id": "programmers-81303",
+      "title": "프로그래머스: 표 편집",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/81303?language=java",
+      "type": "CODING_PROBLEM",
+      "difficulty": "ADVANCED",
+      "topicIds": [
+        "algorithms"
+      ],
+      "summary": "연결 리스트, 스택 연습 문제. 목표 시간 70분.",
+      "estimatedMinutes": 70,
+      "language": "ko"
+    },
+    {
+      "id": "programmers-92343",
+      "title": "프로그래머스: 양과 늑대",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/92343?language=java",
+      "type": "CODING_PROBLEM",
+      "difficulty": "ADVANCED",
+      "topicIds": [
+        "algorithms"
+      ],
+      "summary": "상태 탐색 연습 문제. 목표 시간 70분.",
+      "estimatedMinutes": 70,
+      "language": "ko"
+    },
+    {
+      "id": "programmers-92344",
+      "title": "프로그래머스: 파괴되지 않은 건물",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/92344?language=java",
+      "type": "CODING_PROBLEM",
+      "difficulty": "ADVANCED",
+      "topicIds": [
+        "algorithms"
+      ],
+      "summary": "2차원 누적합 연습 문제. 목표 시간 70분.",
+      "estimatedMinutes": 70,
+      "language": "ko"
+    },
+    {
+      "id": "programmers-118668",
+      "title": "프로그래머스: 코딩 테스트 공부",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/118668?language=java",
+      "type": "CODING_PROBLEM",
+      "difficulty": "ADVANCED",
+      "topicIds": [
+        "algorithms"
+      ],
+      "summary": "DP 연습 문제. 목표 시간 70분.",
+      "estimatedMinutes": 70,
+      "language": "ko"
+    },
+    {
+      "id": "programmers-118669",
+      "title": "프로그래머스: 등산코스 정하기",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/118669?language=java",
+      "type": "CODING_PROBLEM",
+      "difficulty": "ADVANCED",
+      "topicIds": [
+        "algorithms"
+      ],
+      "summary": "변형 Dijkstra 연습 문제. 목표 시간 70분.",
+      "estimatedMinutes": 70,
+      "language": "ko"
+    },
+    {
+      "id": "programmers-72414",
+      "title": "프로그래머스: 광고 삽입",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/72414?language=java",
+      "type": "CODING_PROBLEM",
+      "difficulty": "ADVANCED",
+      "topicIds": [
+        "algorithms"
+      ],
+      "summary": "누적합, 시간 파싱 연습 문제. 목표 시간 70분.",
+      "estimatedMinutes": 70,
+      "language": "ko"
+    },
+    {
+      "id": "programmers-42897",
+      "title": "프로그래머스: 도둑질",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/42897?language=java",
+      "type": "CODING_PROBLEM",
+      "difficulty": "ADVANCED",
+      "topicIds": [
+        "algorithms"
+      ],
+      "summary": "원형 DP 연습 문제. 첫 집 포함·제외를 분리한다.",
+      "estimatedMinutes": 90,
+      "language": "ko"
+    },
+    {
+      "id": "programmers-43236",
+      "title": "프로그래머스: 징검다리",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/43236?language=java",
+      "type": "CODING_PROBLEM",
+      "difficulty": "ADVANCED",
+      "topicIds": [
+        "algorithms"
+      ],
+      "summary": "매개변수 탐색 연습 문제. 최소 거리의 가능 여부를 검사한다.",
+      "estimatedMinutes": 90,
+      "language": "ko"
+    },
+    {
+      "id": "programmers-17685",
+      "title": "프로그래머스: 자동완성",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/17685?language=java",
+      "type": "CODING_PROBLEM",
+      "difficulty": "ADVANCED",
+      "topicIds": [
+        "algorithms"
+      ],
+      "summary": "Trie, 정렬 연습 문제. 접두어가 구분되는 최소 길이를 찾는다.",
+      "estimatedMinutes": 90,
+      "language": "ko"
+    },
+    {
+      "id": "programmers-60060",
+      "title": "프로그래머스: 가사 검색",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/60060?language=java",
+      "type": "CODING_PROBLEM",
+      "difficulty": "ADVANCED",
+      "topicIds": [
+        "algorithms"
+      ],
+      "summary": "Trie, 이분탐색 연습 문제. 길이별·방향별로 전처리한다.",
+      "estimatedMinutes": 90,
+      "language": "ko"
+    },
+    {
+      "id": "programmers-64063",
+      "title": "프로그래머스: 호텔 방 배정",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/64063?language=java",
+      "type": "CODING_PROBLEM",
+      "difficulty": "ADVANCED",
+      "topicIds": [
+        "algorithms"
+      ],
+      "summary": "Union-Find 응용 연습 문제. 다음 빈 방을 경로 압축으로 찾는다.",
+      "estimatedMinutes": 90,
+      "language": "ko"
+    },
+    {
+      "id": "programmers-67260",
+      "title": "프로그래머스: 동굴 탐험",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/67260?language=java",
+      "type": "CODING_PROBLEM",
+      "difficulty": "ADVANCED",
+      "topicIds": [
+        "algorithms"
+      ],
+      "summary": "그래프, 선행 조건 연습 문제. 방문 가능 상태와 대기 상태를 나눈다.",
+      "estimatedMinutes": 90,
+      "language": "ko"
+    },
+    {
+      "id": "coding-test-guide-1",
+      "title": "카카오 2024 겨울 인턴십 코딩테스트 해설",
+      "url": "https://tech.kakao.com/posts/610",
+      "type": "ARTICLE",
+      "difficulty": "INTERMEDIATE",
+      "topicIds": [
+        "algorithms"
+      ],
+      "summary": "기업이 공개한 코딩테스트 해설 또는 출제 방향 참고 자료.",
+      "estimatedMinutes": 20,
+      "language": "ko"
+    },
+    {
+      "id": "coding-test-guide-2",
+      "title": "카카오 2022 테크 여름인턴십 코딩테스트 해설",
+      "url": "https://tech.kakao.com/posts/530",
+      "type": "ARTICLE",
+      "difficulty": "INTERMEDIATE",
+      "topicIds": [
+        "algorithms"
+      ],
+      "summary": "기업이 공개한 코딩테스트 해설 또는 출제 방향 참고 자료.",
+      "estimatedMinutes": 20,
+      "language": "ko"
+    },
+    {
+      "id": "coding-test-guide-3",
+      "title": "카카오 신입 공채 1차 코딩테스트 해설",
+      "url": "https://tech.kakao.com/posts/344",
+      "type": "ARTICLE",
+      "difficulty": "INTERMEDIATE",
+      "topicIds": [
+        "algorithms"
+      ],
+      "summary": "기업이 공개한 코딩테스트 해설 또는 출제 방향 참고 자료.",
+      "estimatedMinutes": 20,
+      "language": "ko"
+    },
+    {
+      "id": "coding-test-guide-4",
+      "title": "LINE 인턴 채용 코딩테스트 문제 해설",
+      "url": "https://engineering.linecorp.com/ko/blog/2019-firsthalf-line-internship-recruit-coding-test/",
+      "type": "ARTICLE",
+      "difficulty": "INTERMEDIATE",
+      "topicIds": [
+        "algorithms"
+      ],
+      "summary": "기업이 공개한 코딩테스트 해설 또는 출제 방향 참고 자료.",
+      "estimatedMinutes": 20,
+      "language": "ko"
+    },
+    {
+      "id": "coding-test-guide-5",
+      "title": "LINE 신입 SW 개발자 코딩테스트 출제 방향",
+      "url": "https://engineering.linecorp.com/ko/blog/2020-line-sw-developer-recruit-coding-test/",
+      "type": "ARTICLE",
+      "difficulty": "INTERMEDIATE",
+      "topicIds": [
+        "algorithms"
+      ],
+      "summary": "기업이 공개한 코딩테스트 해설 또는 출제 방향 참고 자료.",
+      "estimatedMinutes": 20,
+      "language": "ko"
+    }
+  ],
+  "paths": [
+    {
+      "id": "java-backend-refresh",
+      "title": "Java/Kotlin backend refresh",
+      "description": "Refresh JVM backend skills before building larger systems.",
+      "resourceIds": [
+        "kotlin-null-safety",
+        "spring-kotlin-tutorial",
+        "spring-transactions",
+        "use-the-index-luke"
+      ]
+    },
+    {
+      "id": "system-design-interview",
+      "title": "System design interview",
+      "description": "Move from a repeatable interview framework to deep trade-off reasoning.",
+      "resourceIds": [
+        "system-design-interview-vol1",
+        "bytebytego-system-design-101",
+        "ddia",
+        "aws-well-architected",
+        "google-sre-book"
+      ]
+    },
+    {
+      "id": "staff-engineer",
+      "title": "Staff engineer and technical leadership",
+      "description": "Connect architecture work to organizational influence and responsible AI adoption.",
+      "resourceIds": [
+        "staffeng-stories",
+        "google-sre-book",
+        "github-copilot-responsible-use"
+      ]
+    },
+    {
+      "id": "high-throughput-event-pipeline",
+      "title": "High-throughput event pipeline",
+      "description": "Follow the same capability chain seen in commerce and ad-tech roles: ingest, buffer, process, cache, observe, and prove performance.",
+      "resourceIds": [
+        "kafka-introduction",
+        "spring-kafka-reference",
+        "redis-developer-guide",
+        "grafana-k6-first-test",
+        "opentelemetry-java-instrumentation",
+        "pipeline-capstone"
+      ]
+    },
+    {
+      "id": "production-delivery-pipeline",
+      "title": "Production delivery pipeline",
+      "description": "Move a Kotlin/Spring service from repeatable CI to observable deployment and safe rollback.",
+      "resourceIds": [
+        "github-actions-java-gradle",
+        "kubernetes-deployments",
+        "aws-well-architected",
+        "google-sre-book",
+        "pipeline-capstone"
+      ]
+    },
+    {
+      "id": "algorithm-level-1",
+      "title": "Algorithm Lv.1 — Java fundamentals",
+      "description": "Java collections, strings, loops, and straightforward implementation.",
+      "resourceIds": [
+        "programmers-1845",
+        "programmers-42576",
+        "programmers-42748",
+        "programmers-42840",
+        "programmers-86491",
+        "programmers-42862",
+        "programmers-64061",
+        "programmers-72410",
+        "programmers-81301",
+        "programmers-92334",
+        "programmers-150370",
+        "programmers-258712"
+      ]
+    },
+    {
+      "id": "algorithm-level-2-a",
+      "title": "Algorithm Lv.2-A — Data structures & sorting",
+      "description": "Stacks, queues, heaps, hashing, comparators, and sorting.",
+      "resourceIds": [
+        "programmers-12909",
+        "programmers-phone-book",
+        "programmers-42578",
+        "programmers-42586",
+        "programmers-42587",
+        "programmers-42583",
+        "programmers-42584",
+        "programmers-42626",
+        "programmers-42746",
+        "programmers-42747"
+      ]
+    },
+    {
+      "id": "algorithm-level-2-b",
+      "title": "Algorithm Lv.2-B — Search & greedy",
+      "description": "Brute force, backtracking, graph traversal, greedy, and two pointers.",
+      "resourceIds": [
+        "programmers-42842",
+        "programmers-87946",
+        "programmers-86971",
+        "programmers-42883",
+        "programmers-42885",
+        "programmers-43165",
+        "programmers-game-map",
+        "programmers-154539",
+        "programmers-154540"
+      ]
+    },
+    {
+      "id": "algorithm-level-2-c",
+      "title": "Algorithm Lv.2-C — Kakao implementation",
+      "description": "Parsing, simulation, preprocessing, binary search, and combination patterns.",
+      "resourceIds": [
+        "programmers-42888",
+        "programmers-17680",
+        "programmers-17686",
+        "programmers-60057",
+        "programmers-72411",
+        "programmers-72412",
+        "programmers-92341",
+        "programmers-118667",
+        "programmers-150368"
+      ]
+    },
+    {
+      "id": "algorithm-level-3-a",
+      "title": "Algorithm Lv.3-A — Graphs, heaps & DP",
+      "description": "Interview-level graph search, scheduling, dynamic programming, and parametric search.",
+      "resourceIds": [
+        "programmers-42579",
+        "programmers-42627",
+        "programmers-42628",
+        "programmers-43162",
+        "programmers-43163",
+        "programmers-43164",
+        "programmers-43105",
+        "programmers-42895",
+        "programmers-42898",
+        "programmers-43238"
+      ]
+    },
+    {
+      "id": "algorithm-level-3-b",
+      "title": "Algorithm Lv.3-B — Advanced Kakao",
+      "description": "Sliding windows, shortest paths, state search, prefix sums, and advanced DP.",
+      "resourceIds": [
+        "programmers-67258",
+        "programmers-72413",
+        "programmers-81303",
+        "programmers-92343",
+        "programmers-92344",
+        "programmers-118668",
+        "programmers-118669",
+        "programmers-72414"
+      ]
+    },
+    {
+      "id": "algorithm-level-4",
+      "title": "Algorithm Lv.4 — Optional depth",
+      "description": "Optional advanced practice for algorithm-heavy hiring processes.",
+      "resourceIds": [
+        "programmers-42897",
+        "programmers-43236",
+        "programmers-17685",
+        "programmers-60060",
+        "programmers-64063",
+        "programmers-67260"
+      ]
+    },
+    {
+      "id": "algorithm-company-guides",
+      "title": "Company coding-test guides",
+      "description": "Public explanations and hiring-test guidance from Kakao and LINE.",
+      "resourceIds": [
+        "coding-test-guide-1",
+        "coding-test-guide-2",
+        "coding-test-guide-3",
+        "coding-test-guide-4",
+        "coding-test-guide-5"
+      ]
+    }
+  ]
+}
