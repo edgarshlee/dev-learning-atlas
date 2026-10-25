@@ -21,7 +21,9 @@ class CatalogService(
         type: ResourceType?,
         difficulty: Difficulty?,
         language: String?,
-    ): List<LearningResource> = catalog.resources.filterResources(query, topicId, type, difficulty, language)
+        maxMinutes: Int?,
+    ): List<LearningResource> =
+        catalog.resources.filterResources(query, topicId, type, difficulty, language, maxMinutes)
 
     fun containsResource(resourceId: String): Boolean = catalog.resources.any { it.id == resourceId }
 }
@@ -32,6 +34,7 @@ internal fun List<LearningResource>.filterResources(
     type: ResourceType?,
     difficulty: Difficulty?,
     language: String?,
+    maxMinutes: Int?,
 ): List<LearningResource> {
     val normalizedQuery = query?.trim()?.lowercase().orEmpty()
     val normalizedLanguage = language?.trim()?.lowercase().orEmpty()
@@ -44,8 +47,9 @@ internal fun List<LearningResource>.filterResources(
         val matchesType = type == null || resource.type == type
         val matchesDifficulty = difficulty == null || resource.difficulty == difficulty
         val matchesLanguage = normalizedLanguage.isEmpty() || resource.language?.lowercase() == normalizedLanguage
+        val matchesDuration = maxMinutes == null || resource.estimatedMinutes <= maxMinutes
 
-        matchesQuery && matchesTopic && matchesType && matchesDifficulty && matchesLanguage
+        matchesQuery && matchesTopic && matchesType && matchesDifficulty && matchesLanguage && matchesDuration
     }
 }
 
