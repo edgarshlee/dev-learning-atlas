@@ -18,6 +18,8 @@ class CatalogController(
         @RequestParam(required = false) query: String?,
         @RequestParam(required = false) topicId: String?,
         @RequestParam(required = false) type: ResourceType?,
-    ): List<LearningResource> = catalogService.findResources(query, topicId, type)
+        @RequestParam(required = false) difficulty: Difficulty?,
+        @RequestParam(required = false) language: String?,
+    ): List<LearningResource> = catalogService.findResources(query, topicId, type, difficulty, language)
 }
 
