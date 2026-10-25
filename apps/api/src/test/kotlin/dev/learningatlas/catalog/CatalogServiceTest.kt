@@ -13,6 +13,7 @@ class CatalogServiceTest {
             difficulty = Difficulty.FOUNDATION,
             language = "en",
             topicIds = listOf("kotlin"),
+            estimatedMinutes = 25,
         ),
         resource(
             id = "spring-transactions",
@@ -22,6 +23,7 @@ class CatalogServiceTest {
             difficulty = Difficulty.INTERMEDIATE,
             language = "ko",
             topicIds = listOf("spring"),
+            estimatedMinutes = 45,
         ),
         resource(
             id = "advanced-kotlin",
@@ -31,6 +33,7 @@ class CatalogServiceTest {
             difficulty = Difficulty.ADVANCED,
             language = "en",
             topicIds = listOf("kotlin"),
+            estimatedMinutes = 120,
         ),
     )
 
@@ -42,6 +45,7 @@ class CatalogServiceTest {
             type = null,
             difficulty = Difficulty.INTERMEDIATE,
             language = null,
+            maxMinutes = null,
         )
 
         assertEquals(listOf("spring-transactions"), result.map(LearningResource::id))
@@ -55,6 +59,7 @@ class CatalogServiceTest {
             type = null,
             difficulty = null,
             language = " EN ",
+            maxMinutes = null,
         )
 
         assertEquals(listOf("kotlin-basics", "advanced-kotlin"), result.map(LearningResource::id))
@@ -68,9 +73,24 @@ class CatalogServiceTest {
             type = ResourceType.ARTICLE,
             difficulty = Difficulty.INTERMEDIATE,
             language = "ko",
+            maxMinutes = null,
         )
 
         assertEquals(listOf("spring-transactions"), result.map(LearningResource::id))
+    }
+
+    @Test
+    fun `filters resources by maximum estimated duration`() {
+        val result = resources.filterResources(
+            query = null,
+            topicId = null,
+            type = null,
+            difficulty = null,
+            language = null,
+            maxMinutes = 45,
+        )
+
+        assertEquals(listOf("kotlin-basics", "spring-transactions"), result.map(LearningResource::id))
     }
 
     private fun resource(
@@ -81,6 +101,7 @@ class CatalogServiceTest {
         difficulty: Difficulty,
         language: String,
         topicIds: List<String>,
+        estimatedMinutes: Int,
     ) = LearningResource(
         id = id,
         title = title,
@@ -89,7 +110,7 @@ class CatalogServiceTest {
         difficulty = difficulty,
         topicIds = topicIds,
         summary = summary,
-        estimatedMinutes = 60,
+        estimatedMinutes = estimatedMinutes,
         language = language,
     )
 }

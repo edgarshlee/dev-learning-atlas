@@ -1,5 +1,6 @@
 package dev.learningatlas.catalog
 
+import jakarta.validation.constraints.Positive
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestParam
@@ -20,6 +21,8 @@ class CatalogController(
         @RequestParam(required = false) type: ResourceType?,
         @RequestParam(required = false) difficulty: Difficulty?,
         @RequestParam(required = false) language: String?,
-    ): List<LearningResource> = catalogService.findResources(query, topicId, type, difficulty, language)
+        @RequestParam(required = false) @Positive maxMinutes: Int?,
+    ): List<LearningResource> =
+        catalogService.findResources(query, topicId, type, difficulty, language, maxMinutes)
 }
 
