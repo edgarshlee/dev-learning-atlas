@@ -188,10 +188,12 @@ dev-learning-atlas/
 | Method | Endpoint | 설명 |
 |---|---|---|
 | `GET` | `/api/v1/catalog` | 전체 Topic, Resource, Learning Path 조회 |
-| `GET` | `/api/v1/resources?query=&topicId=&type=` | 자료 검색·필터 |
+| `GET` | `/api/v1/resources?query=&topicId=&type=&difficulty=&language=` | 제목·주제·유형·난이도·언어별 자료 검색 |
 | `GET` | `/api/v1/progress` | 전체 진행률 조회 |
 | `PUT` | `/api/v1/progress/{resourceId}` | 특정 자료의 상태·퍼센트·노트 저장 |
 | `GET` | `/actuator/health` | 애플리케이션 상태 확인 |
+
+예를 들어 중급 한국어 자료만 조회하려면 `GET /api/v1/resources?difficulty=INTERMEDIATE&language=ko`를 사용합니다.
 
 ## 실행 방법
 
