@@ -1,5 +1,5 @@
 {
-  "version": "2026.10.17.1",
+  "version": "2026.10.31.1",
   "topics": [
     {
       "id": "backend-engineering",
@@ -1328,6 +1328,162 @@
       "summary": "기업이 공개한 코딩테스트 해설 또는 출제 방향 참고 자료.",
       "estimatedMinutes": 20,
       "language": "ko"
+    },
+    {
+      "id": "programmers-12906",
+      "title": "프로그래머스: 같은 숫자는 싫어",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/12906?language=java",
+      "type": "CODING_PROBLEM",
+      "difficulty": "FOUNDATION",
+      "topicIds": [
+        "algorithms"
+      ],
+      "summary": "프로그래머스 알고리즘 고득점 Kit의 스택/큐 연습 문제.",
+      "estimatedMinutes": 15,
+      "language": "ko"
+    },
+    {
+      "id": "programmers-42839",
+      "title": "프로그래머스: 소수 찾기",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/42839?language=java",
+      "type": "CODING_PROBLEM",
+      "difficulty": "INTERMEDIATE",
+      "topicIds": [
+        "algorithms"
+      ],
+      "summary": "프로그래머스 알고리즘 고득점 Kit의 완전탐색 연습 문제.",
+      "estimatedMinutes": 40,
+      "language": "ko"
+    },
+    {
+      "id": "programmers-84512",
+      "title": "프로그래머스: 모음사전",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/84512?language=java",
+      "type": "CODING_PROBLEM",
+      "difficulty": "INTERMEDIATE",
+      "topicIds": [
+        "algorithms"
+      ],
+      "summary": "프로그래머스 알고리즘 고득점 Kit의 완전탐색 연습 문제.",
+      "estimatedMinutes": 35,
+      "language": "ko"
+    },
+    {
+      "id": "programmers-42860",
+      "title": "프로그래머스: 조이스틱",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/42860?language=java",
+      "type": "CODING_PROBLEM",
+      "difficulty": "INTERMEDIATE",
+      "topicIds": [
+        "algorithms"
+      ],
+      "summary": "프로그래머스 알고리즘 고득점 Kit의 탐욕법(Greedy) 연습 문제.",
+      "estimatedMinutes": 45,
+      "language": "ko"
+    },
+    {
+      "id": "programmers-42861",
+      "title": "프로그래머스: 섬 연결하기",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/42861?language=java",
+      "type": "CODING_PROBLEM",
+      "difficulty": "ADVANCED",
+      "topicIds": [
+        "algorithms"
+      ],
+      "summary": "프로그래머스 알고리즘 고득점 Kit의 탐욕법(Greedy) 연습 문제.",
+      "estimatedMinutes": 60,
+      "language": "ko"
+    },
+    {
+      "id": "programmers-42884",
+      "title": "프로그래머스: 단속카메라",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/42884?language=java",
+      "type": "CODING_PROBLEM",
+      "difficulty": "ADVANCED",
+      "topicIds": [
+        "algorithms"
+      ],
+      "summary": "프로그래머스 알고리즘 고득점 Kit의 탐욕법(Greedy) 연습 문제.",
+      "estimatedMinutes": 50,
+      "language": "ko"
+    },
+    {
+      "id": "programmers-1843",
+      "title": "프로그래머스: 사칙연산",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/1843?language=java",
+      "type": "CODING_PROBLEM",
+      "difficulty": "ADVANCED",
+      "topicIds": [
+        "algorithms"
+      ],
+      "summary": "프로그래머스 알고리즘 고득점 Kit의 동적계획법(Dynamic Programming) 연습 문제.",
+      "estimatedMinutes": 70,
+      "language": "ko"
+    },
+    {
+      "id": "programmers-87694",
+      "title": "프로그래머스: 아이템 줍기",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/87694?language=java",
+      "type": "CODING_PROBLEM",
+      "difficulty": "ADVANCED",
+      "topicIds": [
+        "algorithms"
+      ],
+      "summary": "프로그래머스 알고리즘 고득점 Kit의 깊이/너비 우선 탐색(DFS/BFS) 연습 문제.",
+      "estimatedMinutes": 60,
+      "language": "ko"
+    },
+    {
+      "id": "programmers-84021",
+      "title": "프로그래머스: 퍼즐 조각 채우기",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/84021?language=java",
+      "type": "CODING_PROBLEM",
+      "difficulty": "ADVANCED",
+      "topicIds": [
+        "algorithms"
+      ],
+      "summary": "프로그래머스 알고리즘 고득점 Kit의 깊이/너비 우선 탐색(DFS/BFS) 연습 문제.",
+      "estimatedMinutes": 70,
+      "language": "ko"
+    },
+    {
+      "id": "programmers-49189",
+      "title": "프로그래머스: 가장 먼 노드",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/49189?language=java",
+      "type": "CODING_PROBLEM",
+      "difficulty": "ADVANCED",
+      "topicIds": [
+        "algorithms"
+      ],
+      "summary": "프로그래머스 알고리즘 고득점 Kit의 그래프 연습 문제.",
+      "estimatedMinutes": 50,
+      "language": "ko"
+    },
+    {
+      "id": "programmers-49191",
+      "title": "프로그래머스: 순위",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/49191?language=java",
+      "type": "CODING_PROBLEM",
+      "difficulty": "ADVANCED",
+      "topicIds": [
+        "algorithms"
+      ],
+      "summary": "프로그래머스 알고리즘 고득점 Kit의 그래프 연습 문제.",
+      "estimatedMinutes": 60,
+      "language": "ko"
+    },
+    {
+      "id": "programmers-49190",
+      "title": "프로그래머스: 방의 개수",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/49190?language=java",
+      "type": "CODING_PROBLEM",
+      "difficulty": "ADVANCED",
+      "topicIds": [
+        "algorithms"
+      ],
+      "summary": "프로그래머스 알고리즘 고득점 Kit의 그래프 연습 문제.",
+      "estimatedMinutes": 70,
+      "language": "ko"
     }
   ],
   "paths": [
@@ -1512,6 +1668,60 @@
         "coding-test-guide-3",
         "coding-test-guide-4",
         "coding-test-guide-5"
+      ]
+    },
+    {
+      "id": "programmers-algorithm-practice-kit",
+      "title": "프로그래머스 알고리즘 고득점 Kit",
+      "description": "프로그래머스가 선정한 10개 알고리즘 유형의 47문제를 원본 Kit 순서로 연습합니다.",
+      "resourceIds": [
+        "programmers-42576",
+        "programmers-1845",
+        "programmers-phone-book",
+        "programmers-42578",
+        "programmers-42579",
+        "programmers-12906",
+        "programmers-42586",
+        "programmers-12909",
+        "programmers-42587",
+        "programmers-42583",
+        "programmers-42584",
+        "programmers-42626",
+        "programmers-42627",
+        "programmers-42628",
+        "programmers-42748",
+        "programmers-42746",
+        "programmers-42747",
+        "programmers-86491",
+        "programmers-42840",
+        "programmers-42839",
+        "programmers-42842",
+        "programmers-87946",
+        "programmers-86971",
+        "programmers-84512",
+        "programmers-42862",
+        "programmers-42860",
+        "programmers-42883",
+        "programmers-42885",
+        "programmers-42861",
+        "programmers-42884",
+        "programmers-42895",
+        "programmers-43105",
+        "programmers-42898",
+        "programmers-1843",
+        "programmers-42897",
+        "programmers-43165",
+        "programmers-43162",
+        "programmers-game-map",
+        "programmers-43163",
+        "programmers-87694",
+        "programmers-43164",
+        "programmers-84021",
+        "programmers-43238",
+        "programmers-43236",
+        "programmers-49189",
+        "programmers-49191",
+        "programmers-49190"
       ]
     }
   ]
