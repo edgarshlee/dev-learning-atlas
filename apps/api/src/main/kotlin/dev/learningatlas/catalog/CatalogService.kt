@@ -26,6 +26,16 @@ class CatalogService(
         catalog.resources.filterResources(query, topicId, type, difficulty, language, maxMinutes)
 
     fun containsResource(resourceId: String): Boolean = catalog.resources.any { it.id == resourceId }
+
+    fun findPath(pathId: String): LearningPath? = catalog.paths.find { it.id == pathId }
+
+    fun codingResourceIds(path: LearningPath): List<String> = path.resourceIds.filter { id ->
+        catalog.resources.any { it.id == id && it.type == ResourceType.CODING_PROBLEM }
+    }
+
+    fun resourcesById(): Map<String, LearningResource> = catalog.resources.associateBy { it.id }
+
+    fun findResource(resourceId: String): LearningResource? = catalog.resources.find { it.id == resourceId }
 }
 
 internal fun List<LearningResource>.filterResources(

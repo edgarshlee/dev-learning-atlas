@@ -19,12 +19,15 @@ class AtlasApplicationTest(
     fun contextLoads() = Unit
 
     @Test
-    fun `loads the complete algorithm interview roadmap`() {
+    fun `loads the complete algorithm interview roadmap and Programmers practice kit`() {
         val algorithmResources = catalogService.catalog.resources.filter { "algorithms" in it.topicIds }
         val algorithmPaths = catalogService.catalog.paths.filter { it.id.startsWith("algorithm-") }
+        val programmersKit = catalogService.catalog.paths.single { it.id == "programmers-algorithm-practice-kit" }
 
-        assertEquals(69, algorithmResources.size)
-        assertEquals(64, algorithmResources.count { it.type.name == "CODING_PROBLEM" })
+        assertEquals(81, algorithmResources.size)
+        assertEquals(76, algorithmResources.count { it.type.name == "CODING_PROBLEM" })
         assertEquals(8, algorithmPaths.size)
+        assertEquals(47, programmersKit.resourceIds.size)
+        assertEquals(47, programmersKit.resourceIds.distinct().size)
     }
 }

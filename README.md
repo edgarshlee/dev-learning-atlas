@@ -4,7 +4,7 @@
 
 책, 강의, 기술 문서, GitHub 저장소와 코딩테스트 문제를 단순히 북마크하는 데서 끝내지 않고, **선행 지식 그래프**, **목표별 학습 경로**, **개인 진행률**로 연결합니다. Karakeep에서는 저장·태깅·재발견이라는 제품 아이디어만 참고했으며 소스 코드는 사용하지 않았습니다.
 
-현재 카탈로그에는 Kotlin/Spring, 시스템 설계, 분산 시스템, 데이터·이벤트 파이프라인, 성능, 배포 플랫폼, 기술 리더십과 알고리즘 학습 자료가 포함됩니다. Algorithms 영역은 프로그래머스 64문제, 카카오·LINE 공개 해설 5개, 난이도별 학습 경로 8개로 구성됩니다.
+현재 카탈로그에는 Kotlin/Spring, 시스템 설계, 분산 시스템, 데이터·이벤트 파이프라인, 성능, 배포 플랫폼, 기술 리더십과 알고리즘 학습 자료가 포함됩니다. Algorithms 영역은 프로그래머스 76문제, 카카오·LINE 공개 해설 5개, 기존 학습 경로 8개와 프로그래머스 알고리즘 고득점 Kit 경로 1개로 구성됩니다.
 
 ## 해결하려는 문제
 
@@ -24,6 +24,8 @@ Dev Learning Atlas는 공개 지식을 그래프로 구조화하고 개인 진�
 - 제목과 설명 검색, 주제·자료 유형 필터
 - 책, 강의, 문서, 저장소, 코딩 문제, 실습 자료 지원
 - `NOT_STARTED → IN_PROGRESS → COMPLETED` 진행률 관리
+- 활성 학습 경로와 목표일·학습 요일·시간 예산을 반영한 Today 큐
+- 풀이 시간·결과·자신감·회고를 보존하는 Attempt 이력과 규칙 기반 복습 일정
 - 목표별 순서가 있는 Learning Path
 - Git으로 리뷰 가능한 공개 카탈로그
 - PostgreSQL에 분리 저장되는 개인 진행 상태
@@ -191,6 +193,11 @@ dev-learning-atlas/
 | `GET` | `/api/v1/resources?query=&topicId=&type=&difficulty=&language=&maxMinutes=` | 제목·주제·유형·난이도·언어·예상 학습시간별 자료 검색 |
 | `GET` | `/api/v1/progress` | 전체 진행률 조회 |
 | `PUT` | `/api/v1/progress/{resourceId}` | 특정 자료의 상태·퍼센트·노트 저장 |
+| `POST` | `/api/v1/study-plans` | 학습 경로를 활성 계획으로 시작 |
+| `GET` | `/api/v1/study-plans/active` | 현재 활성 학습 계획 조회 |
+| `GET` | `/api/v1/today` | 복습 우선순위와 일일 시간 예산이 반영된 큐 조회 |
+| `POST` | `/api/v1/attempts/start` | 문제 풀이 시작과 타이머 저장 |
+| `POST` | `/api/v1/attempts/{id}/complete` | 풀이 결과 저장과 다음 복습 예약 |
 | `GET` | `/actuator/health` | 애플리케이션 상태 확인 |
 
 예를 들어 중급 한국어 자료만 조회하려면 `GET /api/v1/resources?difficulty=INTERMEDIATE&language=ko`를 사용합니다.
@@ -243,12 +250,12 @@ npm run dev
 node scripts/import-algorithm-roadmap.mjs
 ```
 
-가져오기 스크립트는 URL 기준으로 기존 자료를 갱신하므로 반복 실행해도 중복되지 않습니다. 예상 문제 64개와 공개 자료 5개가 일치하지 않으면 파일을 쓰기 전에 실패합니다.
+가져오기 스크립트는 URL 기준으로 기존 자료를 갱신하므로 반복 실행해도 중복되지 않습니다. 로드맵 문제 64개와 공개 자료 5개가 일치하지 않으면 파일을 쓰기 전에 실패합니다. 고득점 Kit 경로는 기존 로드맵 문제를 재사용하고 누락된 12문제만 추가합니다.
 
 ## 품질 전략
 
 - `CatalogValidatorTest`: 정상 그래프와 순환·잘못된 참조 거부 검증
-- `AtlasApplicationTest`: Spring 전체 컨텍스트, 카탈로그 로딩, 알고리즘 자료 수 검증
+- `AtlasApplicationTest`: Spring 전체 컨텍스트, 카탈로그 로딩, 알고리즘 자료·고득점 Kit 경로 수 검증
 - Docker API 빌드에서 `clean test bootJar` 실행
 - Web 빌드에서 TypeScript 프로젝트 검사 후 Vite 프로덕션 번들 생성
 - GitHub Actions에서 API 컨테이너 빌드와 Web `npm ci && npm run build` 병렬 검증
