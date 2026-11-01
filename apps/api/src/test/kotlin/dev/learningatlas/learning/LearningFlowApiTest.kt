@@ -60,13 +60,17 @@ class LearningFlowApiTest(@LocalServerPort private val port: Int) {
     }
 
     private fun get(path: String) = client.send(
-        HttpRequest.newBuilder(URI("http://localhost:$port$path")).GET().build(),
+        HttpRequest.newBuilder(URI("http://localhost:$port$path"))
+            .header("Origin", "http://localhost:3000")
+            .GET()
+            .build(),
         HttpResponse.BodyHandlers.ofString(),
     )
 
     private fun post(path: String, body: String) = client.send(
         HttpRequest.newBuilder(URI("http://localhost:$port$path"))
             .header("Content-Type", "application/json")
+            .header("Origin", "http://localhost:3000")
             .POST(HttpRequest.BodyPublishers.ofString(body))
             .build(),
         HttpResponse.BodyHandlers.ofString(),
