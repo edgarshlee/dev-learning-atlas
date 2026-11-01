@@ -14,9 +14,9 @@ import java.time.Instant
 import java.time.LocalDate
 import java.time.ZoneId
 
-data class StudyPlanResponse(val id: Long, val pathId: String, val targetDate: LocalDate, val learningWeekdays: Set<DayOfWeek>, val timeZone: String, val dailyMinutes: Int, val status: PlanStatus, val resourceCount: Int)
+data class StudyPlanResponse(val id: Long, val pathId: String, val startDate: LocalDate, val targetDate: LocalDate, val learningWeekdays: Set<DayOfWeek>, val timeZone: String, val dailyMinutes: Int, val status: PlanStatus, val resourceCount: Int)
 data class TodayEntryResponse(val id: Long, val resourceId: String, val title: String, val url: String, val reason: QueueReason, val estimatedMinutes: Int, val postponed: Boolean, val completed: Boolean)
-data class TodayResponse(val date: LocalDate, val plan: StudyPlanResponse, val entries: List<TodayEntryResponse>, val overdueCount: Int, val dueCount: Int, val completedCount: Int, val masteredCount: Int, val masteredResourceIds: Set<String>)
+data class TodayResponse(val date: LocalDate, val plan: StudyPlanResponse, val entries: List<TodayEntryResponse>, val overdueCount: Int, val dueCount: Int, val completedCount: Int, val masteredCount: Int, val masteredResourceIds: Set<String>, val isLearningDay: Boolean, val nextLearningDate: LocalDate, val remainingLearningDays: Int, val recommendedNewProblemsPerLearningDay: Int)
 data class AttemptResponse(val id: Long, val planId: Long, val resourceId: String, val startedAt: Instant, val endedAt: Instant?, val elapsedMinutes: Int?, val outcome: AttemptOutcome?, val confidence: Int?, val reflection: String?, val review: Boolean, val nextReviewDate: LocalDate?)
 
 @Service
@@ -71,6 +71,17 @@ class LearningService(
     }
 
     @Transactional
+    fun deletePlan(id: Long) {
+        val plan = plans.findById(id).orElseThrow { ResponseStatusException(HttpStatus.NOT_FOUND, "Unknown plan '$id'.") }
+        val queueIds = queues.findAllByPlanId(id).mapNotNull(DailyQueue::id)
+        attempts.deleteAllByPlanId(id)
+        reviews.deleteAllByPlanId(id)
+        if (queueIds.isNotEmpty()) queueEntries.deleteAllByQueueIdIn(queueIds)
+        queues.deleteAllByPlanId(id)
+        plans.delete(plan)
+    }
+
+    @Transactional
     fun today(): TodayResponse {
         val plan = requireActivePlan()
         val date = StudyDate.today(clock, validZone(plan.timeZone))
@@ -80,10 +91,14 @@ class LearningService(
         val resources = catalogService.resourcesById()
         val completed = plan.resourceIds.count { id -> attemptHistory.any { it.resourceId == id && it.outcome in successfulOutcomes } || progress.findByResourceId(id)?.status == LearningStatus.COMPLETED }
         val masteredResourceIds = plan.resourceIds.filter { id -> MasteryPolicy.isMastered(attemptHistory.filter { it.resourceId == id }) }.toSet()
+        val isLearningDay = date.dayOfWeek in plan.learningWeekdays
+        val nextLearningDate = ReviewPolicy.nextLearningDay(if (isLearningDay) date.plusDays(1) else date, plan.learningWeekdays)
+        val remainingLearningDays = QueuePolicy.remainingLearningDays(date, plan.targetDate, plan.learningWeekdays)
+        val recommendedNewProblems = QueuePolicy.newProblemTarget(plan.resourceIds.size - completed, if (isLearningDay) date else nextLearningDate, plan.targetDate, plan.learningWeekdays)
         return TodayResponse(date, plan.response(), entries.map { entry ->
             val resource = resources.getValue(entry.resourceId)
             TodayEntryResponse(entry.id!!, entry.resourceId, resource.title, resource.url, entry.reason, entry.estimatedMinutes, entry.postponed, entry.completed)
-        }, entries.count { it.reason == QueueReason.OVERDUE_REVIEW && !it.postponed && !it.completed }, entries.count { it.reason == QueueReason.DUE_REVIEW && !it.postponed && !it.completed }, completed, masteredResourceIds.size, masteredResourceIds)
+        }, entries.count { it.reason == QueueReason.OVERDUE_REVIEW && !it.postponed && !it.completed }, entries.count { it.reason == QueueReason.DUE_REVIEW && !it.postponed && !it.completed }, completed, masteredResourceIds.size, masteredResourceIds, isLearningDay, nextLearningDate, remainingLearningDays, recommendedNewProblems)
     }
 
     private fun generateQueue(plan: StudyPlan, date: LocalDate): DailyQueue {
@@ -197,7 +212,10 @@ class LearningService(
 
     private fun requireActivePlan() = plans.findFirstByStatus(PlanStatus.ACTIVE) ?: throw ResponseStatusException(HttpStatus.NOT_FOUND, "No active study plan.")
     private fun validZone(value: String): ZoneId = try { ZoneId.of(value) } catch (_: Exception) { badRequest("Unknown time zone '$value'.") }
-    private fun StudyPlan.response() = StudyPlanResponse(id!!, pathId, targetDate, learningWeekdays, timeZone, dailyMinutes, status, resourceIds.size)
+    private fun StudyPlan.response(): StudyPlanResponse {
+        val zone = validZone(timeZone)
+        return StudyPlanResponse(id!!, pathId, createdAt.atZone(zone).toLocalDate(), targetDate, learningWeekdays, timeZone, dailyMinutes, status, resourceIds.size)
+    }
     private fun LearningAttempt.response(nextReviewDate: LocalDate?) = AttemptResponse(id!!, planId, resourceId, startedAt, endedAt, elapsedMinutes, outcome, confidence, reflection, review, nextReviewDate)
 
     private fun badRequest(message: String): Nothing = throw ResponseStatusException(HttpStatus.BAD_REQUEST, message)

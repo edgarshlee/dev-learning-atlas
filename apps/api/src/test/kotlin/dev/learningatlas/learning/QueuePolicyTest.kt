@@ -30,6 +30,11 @@ class QueuePolicyTest {
     }
 
     @Test
+    fun `remaining learning days excludes weekends through target date`() {
+        assertEquals(44, QueuePolicy.remainingLearningDays(LocalDate.of(2026, 11, 1), LocalDate.of(2026, 12, 31), weekdays))
+    }
+
+    @Test
     fun `budget filling skips oversized problems and preserves the target count`() {
         val candidates = listOf("large" to 90, "first" to 25, "second" to 30, "third" to 20)
         assertEquals(listOf("first", "second"), QueuePolicy.fillBudget(candidates, availableMinutes = 60, targetCount = 2, guaranteeOne = true))

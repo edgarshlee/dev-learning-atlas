@@ -32,6 +32,9 @@ class LearningFlowApiTest(@LocalServerPort private val port: Int) {
         val today = get("/api/v1/today")
         assertEquals(200, today.statusCode())
         assertTrue(today.body().contains("programmers-42576"))
+        assertTrue(today.body().contains("\"isLearningDay\":true"))
+        assertTrue(today.body().contains("\"remainingLearningDays\":"))
+        assertTrue(today.body().contains("\"recommendedNewProblemsPerLearningDay\":"))
         val stableToday = get("/api/v1/today")
         assertEquals(today.body(), stableToday.body())
 
@@ -57,6 +60,9 @@ class LearningFlowApiTest(@LocalServerPort private val port: Int) {
         assertEquals(404, get("/api/v1/study-plans/active").statusCode())
         assertEquals(200, post("/api/v1/study-plans/1/activate", "").statusCode())
         assertEquals(200, get("/api/v1/study-plans/active").statusCode())
+
+        assertEquals(204, delete("/api/v1/study-plans/1").statusCode())
+        assertEquals(404, get("/api/v1/study-plans/active").statusCode())
     }
 
     private fun get(path: String) = client.send(
@@ -72,6 +78,14 @@ class LearningFlowApiTest(@LocalServerPort private val port: Int) {
             .header("Content-Type", "application/json")
             .header("Origin", "http://localhost:3000")
             .POST(HttpRequest.BodyPublishers.ofString(body))
+            .build(),
+        HttpResponse.BodyHandlers.ofString(),
+    )
+
+    private fun delete(path: String) = client.send(
+        HttpRequest.newBuilder(URI("http://localhost:$port$path"))
+            .header("Origin", "http://localhost:3000")
+            .DELETE()
             .build(),
         HttpResponse.BodyHandlers.ofString(),
     )
