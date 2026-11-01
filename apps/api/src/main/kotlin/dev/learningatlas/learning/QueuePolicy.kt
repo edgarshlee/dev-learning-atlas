@@ -12,10 +12,19 @@ object QueuePolicy {
         learningWeekdays: Set<DayOfWeek>,
     ): Int {
         if (unseenProblems == 0 || today.dayOfWeek !in learningWeekdays) return 0
-        val remainingDays = generateSequence(today) { date ->
-            date.plusDays(1).takeIf { !it.isAfter(targetDate) }
-        }.count { it.dayOfWeek in learningWeekdays }.coerceAtLeast(1)
+        val remainingDays = remainingLearningDays(today, targetDate, learningWeekdays).coerceAtLeast(1)
         return ceil(unseenProblems.toDouble() / remainingDays).toInt().coerceAtLeast(1)
+    }
+
+    fun remainingLearningDays(
+        fromDate: LocalDate,
+        targetDate: LocalDate,
+        learningWeekdays: Set<DayOfWeek>,
+    ): Int {
+        if (fromDate.isAfter(targetDate)) return 0
+        return generateSequence(fromDate) { date ->
+            date.plusDays(1).takeIf { !it.isAfter(targetDate) }
+        }.count { it.dayOfWeek in learningWeekdays }
     }
 
     fun fillBudget(

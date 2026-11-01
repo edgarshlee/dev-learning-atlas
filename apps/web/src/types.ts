@@ -57,6 +57,7 @@ export type AttemptOutcome = 'SOLVED_INDEPENDENTLY' | 'SOLVED_WITH_HELP' | 'FAIL
 export interface StudyPlan {
   id: number
   pathId: string
+  startDate: string
   targetDate: string
   learningWeekdays: string[]
   timeZone: string
@@ -85,6 +86,10 @@ export interface Today {
   completedCount: number
   masteredCount: number
   masteredResourceIds: string[]
+  isLearningDay: boolean
+  nextLearningDate: string
+  remainingLearningDays: number
+  recommendedNewProblemsPerLearningDay: number
 }
 
 export interface Attempt {

@@ -9,7 +9,7 @@ import {
   type Edge,
   type Node,
 } from '@xyflow/react'
-import { abandonAttempt, activateStudyPlan, completeAttempt, createStudyPlan, loadActiveAttempt, loadCatalog, loadProgress, loadStudyPlans, loadToday, pauseStudyPlan, postponeTodayEntry, saveProgress, startAttempt } from './api'
+import { abandonAttempt, activateStudyPlan, completeAttempt, createStudyPlan, deleteStudyPlan, loadActiveAttempt, loadCatalog, loadProgress, loadStudyPlans, loadToday, pauseStudyPlan, postponeTodayEntry, saveProgress, startAttempt } from './api'
 import type {
   Catalog,
   LearningPath,
@@ -248,6 +248,15 @@ function TodayView({ catalog, today, activeAttempt, onRefresh, onToday, onAttemp
     } catch (reason) { onError(reason instanceof Error ? reason.message : 'Could not start attempt') }
   }
 
+  async function removePlan() {
+    if (!window.confirm('Delete this study plan and its attempts, queues, and review schedule?')) return
+    try {
+      await deleteStudyPlan(today!.plan.id)
+      onAttempt(null)
+      onToday(null)
+    } catch (reason) { onError(reason instanceof Error ? reason.message : 'Could not delete study plan') }
+  }
+
   if (!today) {
     return <section className="plan-setup">
       <div><p className="eyebrow">START A STUDY PLAN</p><h3>Turn a path into today's work.</h3><p>Choose one coding path, a target date, and the time you can reliably protect each day.</p></div>
@@ -263,20 +272,41 @@ function TodayView({ catalog, today, activeAttempt, onRefresh, onToday, onAttemp
     </section>
   }
 
+  const availableEntries = today.entries.filter((entry) => !entry.postponed && !entry.completed)
+
   return <section className="today-layout">
     <div className="today-summary">
-      <div><p className="eyebrow">{today.date}</p><h3>{catalog.paths.find((p) => p.id === today.plan.pathId)?.title}</h3><p>{today.plan.dailyMinutes} minute budget · target {today.plan.targetDate}</p><button className="text-button" onClick={async () => { await pauseStudyPlan(today.plan.id); onToday(null) }}>Pause plan</button></div>
+      <div><p className="eyebrow">{today.date}</p><h3>{catalog.paths.find((p) => p.id === today.plan.pathId)?.title}</h3><p>{today.plan.dailyMinutes} minute budget · target {today.plan.targetDate}</p><div className="plan-actions"><button className="text-button" onClick={async () => { await pauseStudyPlan(today.plan.id); onToday(null) }}>Pause plan</button><button className="danger-button" onClick={removePlan}>Delete plan</button></div></div>
       <div className="today-metrics"><strong>{today.completedCount}/{today.plan.resourceCount}<span>completed</span></strong><strong>{today.masteredCount}<span>mastered</span></strong><strong>{today.overdueCount + today.dueCount}<span>reviews due</span></strong></div>
     </div>
+    <PlanJourney today={today} />
     {activeAttempt && <AttemptPanel attempt={activeAttempt} resource={catalog.resources.find((r) => r.id === activeAttempt.resourceId)!} onDone={onRefresh} onAttempt={onAttempt} onError={onError} />}
     <div className="today-list">
-      {today.entries.filter((entry) => !entry.postponed && !entry.completed).map((entry, index) => <article className="today-card" key={entry.id}>
+      {availableEntries.map((entry, index) => <article className="today-card" key={entry.id}>
         <div className="today-order">{String(index + 1).padStart(2, '0')}</div>
         <div><p className={`queue-reason ${entry.reason.toLowerCase()}`}>{entry.reason.replaceAll('_', ' ')}</p><h3>{entry.title}</h3><p>{entry.estimatedMinutes} minute estimate</p></div>
         <div className="today-actions"><button className="primary-button" onClick={() => begin(entry)} disabled={Boolean(activeAttempt)}>Start solving</button><button className="text-button" onClick={async () => { await postponeTodayEntry(entry.id); await onRefresh() }}>Postpone today</button></div>
       </article>)}
-      {today.entries.filter((entry) => !entry.postponed && !entry.completed).length === 0 && <div className="empty-state"><span>✓</span><h3>Today's queue is clear</h3><p>Come back on your next learning day.</p></div>}
+      {availableEntries.length === 0 && (today.isLearningDay
+        ? <div className="empty-state"><span>✓</span><h3>Today's queue is clear</h3><p>You finished everything scheduled for today. Your next session is {formatPlanDate(today.nextLearningDate)}.</p></div>
+        : <div className="empty-state rest-day"><span>○</span><p className="eyebrow">REST DAY</p><h3>Rest day</h3><p>{formatWeekday(today.date)} is outside your selected learning schedule.</p><p><strong>Next session · {formatPlanDate(today.nextLearningDate)}</strong> · {today.recommendedNewProblemsPerLearningDay} new problems planned</p></div>)}
     </div>
+  </section>
+}
+
+function PlanJourney({ today }: { today: Today }) {
+  const start = new Date(`${today.plan.startDate}T12:00:00`)
+  const current = new Date(`${today.date}T12:00:00`)
+  const target = new Date(`${today.plan.targetDate}T12:00:00`)
+  const totalDays = Math.max(1, Math.round((target.getTime() - start.getTime()) / 86400000))
+  const elapsedDays = Math.max(0, Math.min(totalDays, Math.round((current.getTime() - start.getTime()) / 86400000)))
+  const elapsedPercent = Math.round((elapsedDays / totalDays) * 100)
+  const learningDays = today.plan.learningWeekdays.map((day) => day.slice(0, 3)).join(' · ')
+  return <section className="plan-journey" aria-label="Plan journey">
+    <div className="journey-heading"><div><p className="eyebrow">PLAN JOURNEY</p><h3>From first problem to target day</h3></div><strong>{today.remainingLearningDays} learning days left</strong></div>
+    <div className="journey-track"><span style={{ width: `${elapsedPercent}%` }} /><i style={{ left: `${elapsedPercent}%` }} /></div>
+    <div className="journey-dates"><span><small>START</small>{formatPlanDate(today.plan.startDate)}</span><span className="journey-today"><small>TODAY · {elapsedPercent}% OF CALENDAR</small>{formatPlanDate(today.date)}</span><span><small>TARGET</small>{formatPlanDate(today.plan.targetDate)}</span></div>
+    <div className="journey-details"><span>{learningDays}</span><span>{today.plan.dailyMinutes} min per session</span><span>{today.recommendedNewProblemsPerLearningDay} new problems per session</span><span>Next · {formatPlanDate(today.nextLearningDate)}</span></div>
   </section>
 }
 
@@ -471,6 +501,14 @@ function formatDuration(minutes: number) {
   if (minutes < 60) return `${minutes} min`
   const hours = Math.round((minutes / 60) * 10) / 10
   return `${hours} hr`
+}
+
+function formatPlanDate(date: string) {
+  return new Date(`${date}T12:00:00`).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
+}
+
+function formatWeekday(date: string) {
+  return new Date(`${date}T12:00:00`).toLocaleDateString('en-US', { weekday: 'long' })
 }
 
 export default App

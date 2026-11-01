@@ -8,6 +8,7 @@ import jakarta.validation.constraints.NotEmpty
 import jakarta.validation.constraints.Size
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.PatchMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
@@ -55,6 +56,10 @@ class LearningController(private val service: LearningService) {
 
     @PostMapping("/study-plans/{id}/activate")
     fun activatePlan(@PathVariable id: Long) = service.activatePlan(id)
+
+    @DeleteMapping("/study-plans/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    fun deletePlan(@PathVariable id: Long) = service.deletePlan(id)
 
     @GetMapping("/today")
     fun today() = service.today()

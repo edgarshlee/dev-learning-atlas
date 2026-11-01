@@ -64,6 +64,11 @@ export async function activateStudyPlan(id: number): Promise<StudyPlan> {
   return expectJson(await fetch(`/api/v1/study-plans/${id}/activate`, { method: 'POST' }))
 }
 
+export async function deleteStudyPlan(id: number): Promise<void> {
+  const response = await fetch(`/api/v1/study-plans/${id}`, { method: 'DELETE' })
+  if (!response.ok) throw new Error(await response.text() || `Request failed with ${response.status}`)
+}
+
 export async function loadActiveAttempt(): Promise<Attempt | null> {
   const response = await fetch('/api/v1/attempts/active')
   if (response.status === 204 || response.status === 404) return null
